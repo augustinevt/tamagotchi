@@ -1,9 +1,18 @@
 class Pet
+
+  @@pet
+
+  define_singleton_method(:pet) do
+    @@pet
+  end
+
   define_method(:initialize) do |name|
     @name = name
     @food = {level: 10, last_time: Time.now()}
     @rest = {level: 10, last_time: Time.now()}
     @activity = {level: 10, last_time: Time.now()}
+    @@pet = self
+    # @@pets.push(self)
   end
 
   define_method(:name) do

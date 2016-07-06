@@ -1,10 +1,32 @@
 <h1><%=@name%></h1>
+<h1><%=@petz%></h1>
 
-<% if (@gif) %>
+
+
+<% if (@gif == "static" ) %>
   <img src="https://aidenin.files.wordpress.com/2013/11/tamlip.gif" alt="gif of pet" />
+<% elsif @gif == "food" %>
+  <img src="https://media.giphy.com/media/83ZUpar3IT2mY/giphy.gif" alt="gif of pet" />
+  <h1><%=@food%></h1>
+  <h2>food</h2>
 <%end%>
 <form class="" action="/new_pet" method="post">
   <h3>Give your Tamogachi a name</h3>
   <input type="text" name="name" id="name">
   <button type="submit" name="button">Make Pet</button>
+</form>
+
+<form class="" action="/feed" method="post">
+  <h3>Feed your Tamogachi</h3>
+  <button type="submit" name="button">Feed</button>
+</form>
+
+<form class="" action="/rest" method="post">
+  <h3>Rest your Tamogachi</h3>
+  <button type="submit" name="button">Rest</button>
+</form>
+
+<form class="" action="/activity" method="post">
+  <h3>Rest your Tamogachi</h3>
+  <button type="submit" name="button">Activity</button>
 </form>
