@@ -29,6 +29,7 @@ class Pet
 
 
   define_method(:feed) do
+    update()
     alive = is_alive?()
     if(alive)
       @food[:level] += 1
@@ -38,10 +39,32 @@ class Pet
     end
   end
 
+  define_method(:go_to_bed) do
+    update()
+    alive = is_alive?()
+    if(alive)
+      @rest[:level] += 1
+      return rest()[:level]
+    else
+      'your pet is dead, long live your pet'
+    end
+  end
+
+  define_method(:play) do
+    update()
+    alive = is_alive?()
+    if(alive)
+      @activity[:level] += 1
+      return activity()[:level]
+    else
+      'your pet is dead, long live your pet'
+    end
+  end
+
   define_method(:update) do |time = nil|
     new_time = time ? time : Time.now()
-    @food[:level] = (@food[:level] - (( new_time - @food[:last_time] ) / 60) ).to_i
-    @rest[:level] = (@rest[:level] - (( new_time - @rest[:last_time] ) / 60) ).to_i
-    @activity[:level] = (@activity[:level] - (( new_time - @activity[:last_time] ) / 60) ).to_i
+    @food[:level] =  (@food[:level] - (( new_time - @food[:last_time] ) / 60) ).ceil()
+    @rest[:level] =  (@rest[:level] - (( new_time - @rest[:last_time] ) / 60) ).ceil()
+    @activity[:level] =  (@activity[:level] - (( new_time - @activity[:last_time] ) / 60) ).ceil()
   end
 end
