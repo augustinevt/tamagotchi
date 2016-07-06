@@ -25,6 +25,13 @@ describe "Pet" do
         my_other_pet.update((Time.now() + 2*60))
         expect(my_other_pet.feed()).to eq(9)
     end
+    
+    it('check if alive conditional return death string when vitals are zero') do
+        my_pet = Pet.new('Fluffy')
+        my_pet.update((Time.now() + 30*60))
+        expect(my_pet.feed()).to eq('your pet is dead, long live your pet')
+
+    end
   end
 
 
